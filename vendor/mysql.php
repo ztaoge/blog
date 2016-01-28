@@ -1,15 +1,14 @@
 <?php
-//namespace ;
-//use ;
+
 class mysql {
     private $_dbh;
     //单一实例
-    private $_instance = null;
+    private static $_instance = null;
 
     //私有构造函数
     private function __construct() {
         try {
-            $this->_dbh = new PDO($conf['dsn'], $conf['user'], $conf['passwd']);
+            $this->_dbh = new PDO(DSN, USER, PASSWD);
         } catch (PDOException $e) {
             echo 'Connection failed' . $e->getMessage();
         }
@@ -17,10 +16,10 @@ class mysql {
 
     //外部调用静态实例方法
     public static function getInstance() {
-        if (self::$_instance instanceof self) {
+        if (self::$_instance === null) {
             self::$_instance = new self();
         }
-        return self::$_isntance;
+        return self::$_instance;
     }
 
     //重写克隆方法，防止用户克隆实例
@@ -29,10 +28,27 @@ class mysql {
     }
 
     //数据查询方法
-    public function select($table, $condition = []) {
+    public function select($table, $conditions = []) {
 
+        $sql = "SELECT * FROM `{$table}`";
+        if ($conditions) {
+            $sql .= ' WHERE ';
+            foreach ($conditions as $key => $value) {
+                $sql.= "`{$key}`" . '=' . ":{$key}" . ' AND ';
+            }
+            $sql = rtrim($sql, ' AND');
+            $stmt = $this->_dbh->prepare($sql);
+            foreach ($conditions as $key => &$value) {
+                $stmt->bindParam($key, $value);
+            }
+        } else {
+            $stmt = $this->_dbh->prepare($sql);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
+    //插入数据
     public function insert($value = [], $table) {
         foreach ($value as $field => $value) {
 
@@ -51,7 +67,7 @@ class mysql {
 
     //使用原生SQL语句
     public function query($sql = '') {
-        return
+        return ;
 	}
 
     //调试
