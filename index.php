@@ -26,4 +26,11 @@ $condition = ['name' => 'zzz', 'gender' => 'male', 'name1' => 'zz', 'gender1' =>
 
 //echo arr_implode($condition, '=');
 
-var_dump($dbh->select('test', ['gender' => 'male', 'id' => 1002]));
+//var_dump($dbh->select('test', ['gender' => 'male', 'id' => 1001]));
+
+var_dump($dbh->insert('test', ['name'=>'ztaoge','gender'=>'female']));
+
+
+
+
+

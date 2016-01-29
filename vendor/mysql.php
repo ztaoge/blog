@@ -4,7 +4,6 @@ class mysql {
     private $_dbh;
     //单一实例
     private static $_instance = null;
-
     //私有构造函数
     private function __construct() {
         try {
@@ -16,7 +15,7 @@ class mysql {
 
     //外部调用静态实例方法
     public static function getInstance() {
-        if (self::$_instance === null) {
+        if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
         return self::$_instance;
@@ -49,14 +48,19 @@ class mysql {
     }
 
     //插入数据
-    public function insert($value = [], $table) {
-        foreach ($value as $field => $value) {
-
+    public function insert($table, $values = []) {
+        $sql = "INSERT INTO `{$table}` (";
+        $sql .= implode(array_keys($values), ',') . ") VALUES (:" . implode(array_keys($values), ",:") .")";
+        $stmt = $this->_dbh->prepare($sql);
+        foreach ($values as $key => &$value) {
+            $stmt->bindParam($key, $value);
         }
-        $stmt = self::$_dbh->prepare("INSERT INTO {$table} () VALUES ()");
         if ($stmt->execute()) {
             return true;
-        } else return false;
+        } else {
+            return false;
+        }
+
     }
 
     public function delete($table, $field = []) {}
