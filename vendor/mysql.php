@@ -27,28 +27,32 @@ class mysql {
     }
 
     //数据查询方法
-    public function select($table, $conditions = []) {
-
+    public function select($table = '', $conditions = [], $limits = []) {
+        if ($limits) {
+            $limit = " LIMIT ". implode($limits, ',');
+        } else {
+            $limit = '';
+        }
         $sql = "SELECT * FROM `{$table}`";
         if ($conditions) {
             $sql .= ' WHERE ';
             foreach ($conditions as $key => $value) {
                 $sql.= "`{$key}`" . '=' . ":{$key}" . ' AND ';
             }
-            $sql = rtrim($sql, ' AND');
+            $sql = rtrim($sql, ' AND') . $limit;
             $stmt = $this->_dbh->prepare($sql);
             foreach ($conditions as $key => &$value) {
                 $stmt->bindParam($key, $value);
             }
         } else {
-            $stmt = $this->_dbh->prepare($sql);
+            $stmt = $this->_dbh->prepare($sql.$limit);
         }
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
     //插入数据
-    public function insert($table, $values = []) {
+    public function insert($table = '', $values = []) {
         $sql = "INSERT INTO `{$table}` (";
         $sql .= implode(array_keys($values), ',') . ") VALUES (:" . implode(array_keys($values), ",:") .")";
         $stmt = $this->_dbh->prepare($sql);
@@ -63,10 +67,35 @@ class mysql {
 
     }
 
-    public function delete($table, $field = []) {}
+    //删除数据
+    public function delete($table = '', $field = []) {}
 
-    public function update($table, $values = []) {
-        $stmt = self::$_bdh->prepare("UPDATE {$table} SET");
+    //更新数据
+    public function update($table = '', $values = [], $conditions = []) {
+        $sql = "UPDATE `{$table}` SET ";
+        foreach ($values as $key => $value) {
+            $sql .= "`{$key}`" . '=' . ":{$key},";
+        }
+        $sql = rtrim($sql, ',');
+        if ($conditions) {
+            $sql .= ' WHERE ';
+            foreach ($conditions as $key => $value) {
+                $sql.= "`{$key}`" . '=' . ":{$key}" . ' AND ';
+            }
+            $sql = rtrim($sql, ' AND');
+        }
+        $stmt = $this->_dbh->prepare($sql);
+        foreach ($values as $key => &$value) {
+            $stmt->bindParam($key, $value);
+        }
+        foreach ($conditions as $key => &$value) {
+            $stmt->bindParam($key, $value);
+        }
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //使用原生SQL语句
