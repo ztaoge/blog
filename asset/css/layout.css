@@ -1,0 +1,73 @@
+body {}
+.topbar {
+	position:fixed;
+	margin-top:0px;
+	display:block;
+	height:30px;
+	width:100%;
+	left:0;
+	top:0;
+	font-size:15px;
+	font-family:"宋体";
+	background:#EEEEEE;
+	padding-top:3px;
+	padding:0 auto;
+}
+.topbar_main {
+	margin: 0 auto;
+	width:75%;
+}
+.topbar_main .topbar_login {
+	float:right;
+}
+.topbar_main a:hover {
+	text-decoration:none;
+}
+.topbar_main .signin{
+	/*display:block;*/
+	background:#7B68EE;
+	padding:5px;
+	color:white;
+}
+.blog {
+	margin:0 auto;
+	margin-top:30px;
+	width:75%;
+	border:1px solid;
+}
+.headarea {
+	border:1px solid;
+	width:100%;
+	height:200px;
+	border:1px solid;
+	background:yellow;
+	margin-bottom:15px;
+}
+.left_column {
+	float:left;
+	border:1px solid;
+	width:30%;
+	height:800px;
+	padding:7px;
+}
+.right_column {
+	float:right;
+	border:1px solid;
+	width:65%;
+	height:900px;
+}
+.user_info {
+	margin-bottom:10px;
+	border:1px solid;
+	height:200px;
+	background: red;
+}
+.blog_info {
+    border:1px solid;
+    height:200px;
+    margin-bottom: 10px;
+}
+.friend_list {
+	border:1px solid;
+	height:200px;
+}

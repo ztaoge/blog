@@ -1,22 +1,23 @@
 <?php
 require_once 'common/config/conf.php';
+require_once 'vendor/mysql.php';
+require_once 'vendor/page.php';
 $db = new PDO(DSN, USER, PASSWD);
 $values = [
-    'name' => 'girl',
+    'name'   => 'girl',
     'gender' => 'female',
 ];
 $table = 'test';
 
-//$sql = "INSERT INTO `{$table}` (";
-//$sql .= implode(array_keys($values), ',') . ") VALUES (:'" . implode(array_keys($values), "',:'") ."')";
-//var_dump($sql);
 
 
-$sql = "UPDATE `{$table}` SET ";
-foreach ($values as $key => $value) {
-    $sql .= $key . '=' . ":{$key},";
-}
-$sql = rtrim($sql, ',');
+$page = new page();
+var_dump($page->test());
 
 
-echo $sql;
+
+
+
+
+
+

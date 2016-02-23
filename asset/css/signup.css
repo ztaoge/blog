@@ -1,0 +1,17 @@
+.signup_title {
+	width:65%;
+	margin:0 auto;
+	margin-top: 50px;
+	border:1px solid;
+	padding-left:63px;
+}
+.signup_form {
+	margin:0 auto;
+	margin-top:20px;
+	width:65%;
+
+	border:1px solid;
+}
+label {
+	color: red;
+}

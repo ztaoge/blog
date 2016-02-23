@@ -1,6 +1,6 @@
 <?php
-
-class mysql {
+class mysql
+{
     private $_dbh;
     //单一实例
     private static $_instance = null;
@@ -9,7 +9,7 @@ class mysql {
         try {
             $this->_dbh = new PDO(DSN, USER, PASSWD);
         } catch (PDOException $e) {
-            echo 'Connection failed' . $e->getMessage();
+            die('Connection failed : ' . $e->getMessage());
         }
     }
 
@@ -24,6 +24,11 @@ class mysql {
     //重写克隆方法，防止用户克隆实例
     public function __clone() {
         die('克隆不被允许');
+    }
+
+    //获取总的数据条数
+    public function getRow() {
+
     }
 
     //数据查询方法
@@ -68,7 +73,7 @@ class mysql {
     }
 
     //删除数据
-    public function delete($table = '', $field = []) {}
+    public function delete($table = '') {}
 
     //更新数据
     public function update($table = '', $values = [], $conditions = []) {
