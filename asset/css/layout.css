@@ -20,14 +20,17 @@ body {}
 .topbar_main .topbar_login {
 	float:right;
 }
-.topbar_main a:hover {
+.topbar_main .signin a:hover {
 	text-decoration:none;
 }
 .topbar_main .signin{
 	/*display:block;*/
 	background:#7B68EE;
-	padding:5px;
+	padding:0px;
 	color:white;
+}
+.login_form {
+	height:100px;
 }
 .blog {
 	margin:0 auto;
@@ -53,7 +56,7 @@ body {}
 .right_column {
 	float:right;
 	border:1px solid;
-	width:65%;
+	width:69%;
 	height:900px;
 }
 .user_info {

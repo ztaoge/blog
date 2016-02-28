@@ -18,7 +18,7 @@ $(document).ready(function() {
 				async:false,
 				type:'get',
 				data:{username:username},
-				url:'signup.php',
+				url:'../signup.php',
 				success:function(data) {
 					flag = data;
 				}

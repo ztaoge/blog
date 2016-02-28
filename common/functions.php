@@ -16,3 +16,7 @@ function getUuid() {
     $uuid = (int)$str;
     return $uuid;
 }
+
+function checkLogin() {
+
+}
