@@ -26,11 +26,13 @@ if (isset($_GET['username']) ? $_GET['username'] : false) {
 
 //用户注册
 //TODO: 注册后的操作
-if($username && $passwd) {
+if($username != null && $passwd != null) {
     $dbh = mysql::getInstance();
-    if($dbh->insert('user', ['id' => getUuid(), 'username' => $username, 'passwd' => $passwd]))
+    if($dbh->insert('user', ['id' => getUuid(), 'username' => $username, 'passwd' => $passwd])) {
         setcookie('username', $username, COOKIE_EXPIRE);
         header("location:http://localhost:8080/blog/index.php");
     } else {
         echo 'it false';
+    }
 }
+

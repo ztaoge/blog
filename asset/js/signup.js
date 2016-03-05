@@ -18,7 +18,7 @@ $(document).ready(function() {
 				async:false,
 				type:'get',
 				data:{username:username},
-				url:'../signup.php',
+				url:'../../blog/signup.php',
 				success:function(data) {
 					flag = data;
 				}
@@ -63,6 +63,14 @@ $(document).ready(function() {
 		}
 	});
 
+	$.ajax({
+		type:'get',
+		data:{username:'zzz'},
+		url:'../../blog/signup.php',
+		success:function(data) {
+			console.log(data);
+		}
+	});
 
 });
 
