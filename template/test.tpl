@@ -9,6 +9,9 @@
     <script type="text/javascript" src="../../asset/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-hello world!
+hello world! test.tpl
+<div>
+    <{include file="left.tpl"}>
+</div>
 </body>
 </html>

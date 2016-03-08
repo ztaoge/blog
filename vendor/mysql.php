@@ -32,11 +32,16 @@ class mysql
     }
 
     //数据查询方法
-    public function select($table = '', $conditions = [], $limits = []) {
+    public function select($table = '', $conditions = [], $limits = [], $orderBy = '', $sort = '') {
         if ($limits) {
             $limit = " LIMIT ". implode($limits, ',');
         } else {
             $limit = '';
+        }
+        if ($orderBy != '') {
+            $orderBy = " ORDER BY `{$orderBy}`";
+        } else {
+            $orderBy = '';
         }
         $sql = "SELECT * FROM `{$table}`";
         if ($conditions) {
@@ -44,13 +49,13 @@ class mysql
             foreach ($conditions as $key => $value) {
                 $sql.= "`{$key}`" . '=' . ":{$key}" . ' AND ';
             }
-            $sql = rtrim($sql, ' AND') . $limit;
+            $sql = rtrim($sql, ' AND') . $orderBy . ' ' . $sort . $limit;
             $stmt = $this->_dbh->prepare($sql);
             foreach ($conditions as $key => &$value) {
                 $stmt->bindParam($key, $value);
             }
         } else {
-            $stmt = $this->_dbh->prepare($sql.$limit);
+            $stmt = $this->_dbh->prepare($sql . $orderBy . ' ' . $sort . $limit);
         }
         $stmt->execute();
         return $stmt->fetchAll();
@@ -111,5 +116,13 @@ class mysql
     //调试
     public function getDb() {
         return self::$_dbh;
+    }
+
+    //获取当前数据库里的数据条数
+    public function getNum($table = '', $conditions = []) {
+    }
+    //
+    public function test() {
+
     }
 }

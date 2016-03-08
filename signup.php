@@ -11,7 +11,7 @@ isset($_POST['passwd']) ? $passwd= $_POST['passwd'] : $passwd = null;
 //检查用户名
 function check_username() {
     $dbh = mysql::getInstance();
-    $username = $dbh->select('user', ['username' => $_GET['username']]);
+    $username = $dbh->select('blog_users', ['username' => $_GET['username']]);
     if ($username) {
         //该用户已存在
         echo 201;
@@ -28,7 +28,7 @@ if (isset($_GET['username']) ? $_GET['username'] : false) {
 //TODO: 注册后的操作
 if($username != null && $passwd != null) {
     $dbh = mysql::getInstance();
-    if($dbh->insert('user', ['id' => getUuid(), 'username' => $username, 'passwd' => $passwd])) {
+    if($dbh->insert('blog_users', ['id' => getUuid(), 'username' => $username, 'passwd' => $passwd])) {
         setcookie('username', $username, COOKIE_EXPIRE);
         header("location:http://localhost:8080/blog/index.php");
     } else {

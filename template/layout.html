@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="../blog/asset/js/jquery-2.2.0.min.js"></script>
 	<script type="text/javascript" src="../blog/asset/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../blog/asset/js/layout.js"></script>
+	<script type="text/javascript" src="../blog/asset/js/pagination.js"></script>
 </head>
 <body>
 <div class="topbar">
@@ -77,19 +78,11 @@
 	<div class="blog_title"><a href="###">someone's blog</a></div>
 </div>
 <div class="left_column">
-	<div class="user_info">
-		<p>个人资料</p>
-		<img src="" alt="用户头像">
-	</div>
-	<div class="blog_info">
-		<p>博客信息</p>
-	</div>
-	<div class="friend_list">
-		<p>好友</p>
-	</div>
-	
+	<{include file="left.tpl"}>
 </div>
-<div class="right_column"></div>
+<div class="right_column">
+	<{include file="right.tpl"}>
+</div>
 </div>
 
 </div>

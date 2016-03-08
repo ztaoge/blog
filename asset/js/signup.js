@@ -62,16 +62,6 @@ $(document).ready(function() {
 			$("#submit").attr('disabled', false);
 		}
 	});
-
-	$.ajax({
-		type:'get',
-		data:{username:'zzz'},
-		url:'../../blog/signup.php',
-		success:function(data) {
-			console.log(data);
-		}
-	});
-
 });
 
 
