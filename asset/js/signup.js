@@ -25,7 +25,7 @@ $(document).ready(function() {
 			});
 			return flag;
 		}
-
+		//检查输入用户框
 		if (username == '') {
 			span.html('<label style="color:red;">用户名不能为空</label>');
 		} else if (username.length > 10) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
 			span.html('<label style="color:green;">用户名正确</label>');
 		}
 	});
-
+	//检查密码框
 	$("#passwd").blur(function() {
 		var passwd = $("#passwd").val();
 		var span = $("#passwd").next();
@@ -50,7 +50,7 @@ $(document).ready(function() {
 			span.html('<label style="color:green;">该密码可用</label>');
 		}
 	});
-
+	//检查重复密码框
 	$("#passwd_confirm").keyup(function() {
 		var passwd = $("#passwd").val();
 		var passwd_confirm = $("#passwd_confirm").val();

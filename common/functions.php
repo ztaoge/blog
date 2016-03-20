@@ -13,10 +13,11 @@ function getUuid() {
     for($i = 0;$i<5;$i++) {
         $str .= rand(0,9);
     }
-    $uuid = (int)$str;
+    $uuid = intval($str);
     return $uuid;
 }
 
-function checkLogin() {
-
+//获取当前域名
+function getHost() {
+    return $_SERVER['HTTP_HOST'];
 }

@@ -4,38 +4,18 @@
         <hr/>
         <{section name=i loop=$list}>
         <hr/>
-        <div class="item"><p><{$list[i].create_time}></p></div>
+        <div class="item">
+            <p style="float: left;"><a href="post.php?post_id=<{$list[i].id}>"><{$list[i].post_title}></a></p>
+            <span style="float: right"><{$list[i].create_time}></span>
+            <div class="clearfix"></div>
+        </div>
         <{/section}>
     </div>
     <div class="pagebar">
-        <{if $pages < 5}>
-        <ul class="pagination pagination-lg">
-            <{for $i=0;$i<$pages;$i++}>
-                <li><a href="#"><{$i+1}></a></li>
-            <{/for}>
-        </ul>
-        <{else}>
-            <ul class="pager">
-                <li><a href="#">上一页</a></li>
-            </ul>
-        <ul class="pagination pagination-lg">
-            <{for $i=0;$i<5;$i++}>
-                <li><a href="javascript:;"><{$i+1}></a></li>
-            <{/for}>
-        </ul>
-            <ul class="pager">
-                <li><a href="#">下一页</a></li>
-            </ul>
-        <{/if}>
-
-        <ul class="pagination pagination-lg">
-
-        </ul>
-
-
+        <{$tag}>
         <div class="clearfix"></div>
         <div style="padding-left:60%;">
-            <P>当前第**页&nbsp;&nbsp;&nbsp;&nbsp;共有**条数据</P>
+            <P>当前第<{$page}>页&nbsp;&nbsp;&nbsp;&nbsp;共有<{$total}>条数据</P>
         </div>
     </div>
 </div>

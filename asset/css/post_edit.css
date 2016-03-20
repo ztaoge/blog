@@ -1,0 +1,13 @@
+.editor {
+    border:1px solid red;
+    height:500px;
+}
+.submit_btn {
+    border: 1px solid black;
+    padding-left:46%;
+    margin-top: 60px;
+}
+.editor_form {
+
+    border:1px solid blue;
+}

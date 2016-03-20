@@ -22,7 +22,7 @@
 		<{else}>
 		<div class="topbar_login">
 			你好,
-			<a href="#" target="_blank"><{$username}></a>
+			<a href="user.php" target="_blank"><{$username}></a>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<a id="logout" href="#">退出</a>
 		</div>
@@ -87,15 +87,6 @@
 
 </div>
 
-
-<div>
-	<{if $username != null}>
-	<p>username is null</p>
-	<{else}>
-	<p>username is not null,<{$username}></p>
-	<{/if}>
-	<h1><{$username}></h1>
-</div>
 
 
 <script type="text/javascript">

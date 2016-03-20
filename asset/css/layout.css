@@ -75,18 +75,19 @@ body {}
 	height:200px;
 }
 .list {
+	height:750px;
 	border:1px solid black;
 	padding-left:15px;
 	padding-right:20px;
 }
 .item p {
-	line-height:15%;
+	line-height:80%;
 	font-size:30px;
 
 }
 .pagebar {
 	border:1px solid red;
-	margin-top:85%;
+	margin-bottom:0%;
 	padding-left:30%;
 }
 .pagebar ul {

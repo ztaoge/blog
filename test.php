@@ -24,5 +24,24 @@ $value = [
 
 $list = $dbh->select('blog_users', [], [0,1], 'id', 'desc');
 
-print_r($list);
+//print_r($list);
 //var_dump($value);
+$data = [];
+//$data['id'] = 11;
+//$data['author_id'] = 11;
+//$data['post_content'] = 'asdfa';
+//if ($dbh->insert('blog_posts', $data)) {
+//    echo 'it work';
+//} else {
+//    echo 'failure';
+//}
+//$data['id'] = getUuid();
+//$data['post_author_id'] = 11;
+//$data['post_title'] = 'asdfasf';
+//$data['post_content'] = '<p>wfasdf</p>';
+//$dbh->insert('blog_posts', $data);
+//var_dump($data);
+
+header('charset=utf8');
+$posts = $dbh->select('blog_posts', ['id' => $post_id = 145786642660151]);
+var_dump($posts[0]);
