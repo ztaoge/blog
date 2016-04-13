@@ -9,7 +9,10 @@ isset($_COOKIE['username']) ? $username = $_COOKIE['username'] : $username = nul
 
 if (is_null($username)) {
     $smarty->display('error.html');
-} else {
+} else if (isset($_GET['edit'])) {
+    $smarty->assign('username', $username);
+    $smarty->display('user_edit.tpl');
+}else {
     $users = mysql::getInstance()->select('blog_users', ['username' => $username]);
     $comments = mysql::getInstance()->select('blog_comments', ['comment_author' => $username]);
     $posts = mysql::getInstance()->select('blog_posts', ['post_author_id' => intval($users[0]['id'])]);
@@ -21,3 +24,5 @@ if (is_null($username)) {
     $smarty->assign('username', $username);
     $smarty->display('user.tpl');
 }
+
+

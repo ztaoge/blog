@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-primary" style="display: inline-block;float: right;margin-top:3px;margin-right:4px;">编辑</a>
+<a href="user.php?edit=<{$username}>" class="btn btn-primary" style="display: inline-block;float: right;margin-top:3px;margin-right:4px;">编辑</a>
 <p>用户信息</p>
 
 <div class="right">

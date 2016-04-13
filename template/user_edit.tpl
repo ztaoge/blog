@@ -5,12 +5,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../blog/asset/bootstrap-3.3.6-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../blog/asset/css/layout.css">
-    <link rel="stylesheet" tyep="text/css" href="../blog/asset/css/post.css">
-    <link rel="stylesheet" type="text/css" href="../blog/asset/css/post_comment.css">
-
-    <script charset="utf-8" src="../blog/asset/kindeditor/kindeditor.js"></script>
-    <script charset="utf-8" src="../blog/asset/kindeditor/lang/zh_CN.js"></script>
-
     <script type="text/javascript" src="../blog/asset/js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="../blog/asset/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../blog/asset/js/layout.js"></script>
@@ -81,24 +75,56 @@
 </div>
 <div class="blog">
     <div class="headarea">
-        <{if $username != null}>
-            <div class="blog_title"><a href="index.php"><{$username}>'s blog</a></div>
-        <{else}>
-            <div class="blog_title"><a href="index.php">zzz's blog</a></div>
-        <{/if}>
+        <div class="blog_title"><a href="###">someone's blog</a></div>
     </div>
     <div class="left_column">
         <{include file="left.tpl"}>
     </div>
     <div class="right_column">
-        <{include file="post_info.tpl"}>
+        <form  class="form-horizontal" action="user.php">
+            <div class="form-control">
+                <label for="username" class="col-sm-2 control-label">用户名:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="name" value="<{$username}>" disabled>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="gender" class="col-sm-2 control-label">性别:</label>
+                <div class="col-sm-5">
+                    <select class="form-control" name="gender" id="">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="email" class="col-sm-2 control-label">邮箱:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="email" placeholder="请输入邮箱">
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="avatar" class="sr-only col-sm-2 control-label" for="inputfile">上传头像</label>
+                <div class="col-sm-5">
+                    <input type="file" name="avatar">
+                </div>
+            </div>
+            <div class="form-control">
+                <div class="col-sm-offset-2 col-sm-12">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>
 
 </div>
-<script>
-    KindEditor.ready(function(K) {
-        window.editor = K.create('#editor_id');
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
     });
 </script>
 </body>
